@@ -1,10 +1,11 @@
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+const meta = {
   index: {
-    display: 'hidden'
+    display: "hidden",
   },
   docs: {
-    type: 'page',
-    title: 'Documentation'
-  }
-}
+    type: "page",
+    title: "Documentation",
+  },
+};
+
+export default meta;

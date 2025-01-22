@@ -1,6 +1,8 @@
-export default {
-  index: '',
-  configuration: '',
-  callout: '',
-  bleed: ''
-}
+const meta = {
+  index: "",
+  configuration: "",
+  callout: "",
+  bleed: "",
+};
+
+export default meta;

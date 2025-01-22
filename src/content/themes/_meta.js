@@ -1,4 +1,6 @@
-export default {
-  docs: 'Docs Theme',
-  blog: 'Blog Theme'
-}
+const meta = {
+  docs: "Docs Theme",
+  blog: "Blog Theme",
+};
+
+export default meta;
