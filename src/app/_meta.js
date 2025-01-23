@@ -1,6 +1,7 @@
 const meta = {
   index: {
-    display: "hidden",
+    type: "page",
+    title: "Home",
   },
   docs: {
     type: "page",
