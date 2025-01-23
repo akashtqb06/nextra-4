@@ -1,4 +1,3 @@
-import { NextraLogo } from "@/components/icons/Nextra";
 import { Footer, Layout, Navbar } from "nextra-theme-docs";
 import { Banner, Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
@@ -29,7 +28,7 @@ export default async function RootLayout({
           navbar={
             <Navbar
               logo={<h1 className="text-2xl"> Nextra</h1>}
-              projectLink="https://github.com/shuding/nextra"
+              projectLink="https://github.com/officialrajdeepsingh/nextra-4"
             />
           }
           pageMap={await getPageMap()}
