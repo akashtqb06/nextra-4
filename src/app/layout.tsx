@@ -1,5 +1,6 @@
+import { NextraLogo } from "@/components/icons/Nextra";
 import { Footer, Layout, Navbar } from "nextra-theme-docs";
-import { Banner } from "nextra/components";
+import { Banner, Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -21,12 +22,20 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
+      <Head />
       <body>
         <Layout
           banner={banner}
-          navbar={<Navbar logo={<b>Nextra</b>} />}
+          navbar={
+            <Navbar
+              logo={<h1 className="text-2xl"> Nextra</h1>}
+              projectLink="https://github.com/shuding/nextra"
+            />
+          }
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
+          docsRepositoryBase="https://github.com/officialrajdeepsingh/nextra-4/tree/main/docs"
+          editLink="Edit this page on GitHub"
+          sidebar={{ defaultMenuCollapseLevel: 1, autoCollapse: true }}
           footer={footer}
         >
           {children}
