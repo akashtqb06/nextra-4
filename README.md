@@ -9,7 +9,7 @@ The first step is to clone the Nextra 4 project with a git command.
 ```bash
 git clone https://github.com/officialrajdeepsingh/nextra-4.git
 ```
-Next step is to install the Node Package Using Node package manager.
+The next step is to install the Node Package Using the Node package manager.
 
 ```bash
 pnpm install
@@ -19,7 +19,7 @@ yarn install
 npm install
 ```
 
-Laslty, run the development server:
+Lastly, run the development server:
 
 ```bash
 npm run dev
