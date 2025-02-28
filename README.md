@@ -7,7 +7,7 @@
 The first step is to clone the Nextra 4 project with a git command.
 
 ```bash
-git clone https://github.com/officialrajdeepsingh/nextra-4.git
+git clone https://github.com/akashtqb06/nextra-4.git
 ```
 The next step is to install the Node Package Using the Node package manager.
 
