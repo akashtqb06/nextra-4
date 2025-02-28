@@ -27,7 +27,7 @@ export default async function RootLayout({
           banner={banner}
           navbar={
             <Navbar
-              logo={<h1 className="text-2xl"> Nextra</h1>}
+              logo={<h1 className="text-2xl"> MavenDX</h1>}
               projectLink="https://github.com/officialrajdeepsingh/nextra-4"
             />
           }
