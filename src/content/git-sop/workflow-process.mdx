@@ -1,0 +1,92 @@
+# Workflow Process
+
+## Complete Development Workflow
+
+```
+Development Lifecycle Flow
+
+1. Story Creation (Shortcut) → 2. Branch Creation → 3. Development → 4. Testing → 5. Pull Request → 6. Code Review → 7. Merge → 8. Cleanup
+
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Shortcut  │    │   Create    │    │ Development │    │   Local     │
+│    Story    │───▶│   Branch    │───▶│     Work    │───▶│   Testing   │
+│             │    │             │    │             │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+                                                                │
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Branch    │    │    Merge    │    │    Code     │    │    Pull     │
+│   Cleanup   │◄───│  to Master  │◄───│   Review    │◄───│   Request   │
+│             │    │             │    │             │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+```
+
+## Step-by-Step Process
+
+### Step 1: Story Assignment (Shortcut)
+1. Receive story assignment in Shortcut
+2. Review story requirements and acceptance criteria
+3. Ensure story is in "Started" status
+4. Note the Shortcut story ID (e.g., sc-12345)
+
+### Step 2: Branch Creation
+```bash
+# 1. Ensure you're on master and up to date
+git checkout master
+git pull origin master
+
+# 2. Create feature branch
+git checkout -b feature/sc-12345-brief-description
+
+# 3. Push branch to remote
+git push -u origin feature/sc-12345-brief-description
+```
+
+### Step 3: Development Work
+```bash
+# Make your changes
+# ... coding ...
+
+# Stage and commit changes
+git add .
+git commit -m "feat(sc-12345): implement user authentication
+
+- Add login component with form validation
+- Integrate with backend authentication API
+- Add error handling for failed login attempts
+
+Closes sc-12345"
+```
+
+### Step 4: Testing
+- Run local tests for your changes
+- Ensure all existing tests pass
+- Add new tests for new functionality
+- Test integration between frontend and backend if applicable
+
+### Step 5: Pull Request Creation
+```bash
+# Push final changes
+git push origin feature/sc-12345-brief-description
+
+# Create PR via GitHub/GitLab interface or CLI
+```
+
+## Commit Message Standards
+
+### Format
+```
+<type>(story-id): <description>
+
+<optional body>
+
+<optional footer>
+```
+
+### Types
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code refactoring
+- `test`: Adding or modifying tests
+- `chore`: Maintenance tasks

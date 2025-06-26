@@ -1,0 +1,40 @@
+# Build and Deployment Process
+
+## Microservice Architecture Overview
+
+Our deployment strategy follows a microservice architecture where each service is built as a standalone executable using PyArmor for code protection, with the Flask orchestrator serving frontend static assets.
+
+```
+Microservice Deployment Architecture
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        MICROSERVICE ECOSYSTEM                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────┐    ┌─────────────────────────────────────────────┐ │
+│  │   FRONTEND BUILD    │    │           BACKEND MICROSERVICES            │ │
+│  │   (Turborepo)       │    │                                             │ │
+│  │                     │    │  ┌─────────────────┐  ┌─────────────────┐   │ │
+│  │ Static Assets       │────┼─▶│  Orchestrator   │  │   Microservice  │   │ │
+│  │ (HTML, CSS, JS)     │    │  │  Flask Server   │  │       A         │   │ │
+│  │                     │    │  │  + Static Files │  │   (PyArmor)     │   │ │
+│  │ Build Output:       │    │  │   (PyArmor)     │  │                 │   │ │
+│  │ - dist/             │    │  └─────────────────┘  └─────────────────┘   │ │
+│  │ - static/           │    │           │                      │          │ │
+│  │ - index.html        │    │           ▼                      ▼          │ │
+│  └─────────────────────┘    │  ┌─────────────────┐  ┌─────────────────┐   │ │
+│                             │  │   Microservice  │  │   Microservice  │   │ │
+│                             │  │        B        │  │        C        │   │ │
+│                             │  │   (PyArmor)     │  │   (PyArmor)     │   │ │
+│                             │  └─────────────────┘  └─────────────────┘   │ │
+│                             │                                             │ │
+│                             └─────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Build Pipeline Overview
+
+All builds are triggered from the `master` branch and follow a multi-stage process for both frontend and backend components.
+
+...existing code...

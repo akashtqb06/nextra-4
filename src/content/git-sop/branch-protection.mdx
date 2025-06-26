@@ -1,0 +1,63 @@
+# Branch Protection Rules
+
+## Master Branch Protection
+
+Our master branch is protected with the following rules:
+
+```
+Master Branch Protection Settings
+
+┌─────────────────────────────────────────────────────────────┐
+│                    PROTECTION RULES                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ✓ Require pull request reviews before merging             │
+│    └── Required approving reviews: 1                       │
+│    └── Dismiss stale reviews when new commits are pushed   │
+│                                                             │
+│  ✓ Require status checks to pass before merging            │
+│    └── CI/CD Pipeline                                       │
+│    └── Automated Tests                                      │
+│    └── Code Quality Checks                                  │
+│                                                             │
+│  ✓ Require branches to be up to date before merging        │
+│                                                             │
+│  ✓ Include administrators                                   │
+│                                                             │
+│  ✓ Restrict pushes that create public merge commits        │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Review Requirements
+
+- **Minimum**: 1 approved review
+- **Recommended**: 2 approved reviews for critical changes
+- **For Hotfixes**: Senior developer or team lead approval required
+
+### Review Checklist
+- [ ] Code follows project coding standards
+- [ ] All tests pass
+- [ ] Documentation updated if necessary
+- [ ] No sensitive data exposed
+- [ ] Performance impact considered
+- [ ] Security implications reviewed
+- [ ] Shortcut story requirements met
+
+## Status Checks
+
+### Required Checks (Both Repositories)
+```
+Status Check Pipeline
+
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│    Lint     │    │    Build    │    │    Test     │    │   Security  │
+│   Checks    │───▶│   Success   │───▶│   Suite     │───▶│    Scan     │
+│             │    │             │    │             │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+       │                  │                  │                  │
+       ▼                  ▼                  ▼                  ▼
+   ✓ ESLint          ✓ Webpack         ✓ Unit Tests      ✓ Vulnerability
+   ✓ Prettier        ✓ TypeScript      ✓ Integration     ✓ Dependency
+   ✓ Python Black    ✓ Python Build    ✓ E2E Tests       ✓ Code Quality
+```

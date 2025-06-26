@@ -1,0 +1,54 @@
+# Repository Overview
+
+## Project Architecture
+
+Our development ecosystem consists of two main repositories working in coordination:
+
+```
+Development Ecosystem
+├── Turborepo Monorepo
+│   ├── apps/
+│   │   └── mdx_client_restructure/     # Frontend Application
+│   ├── packages/                       # Shared utilities & components
+│   └── turbo.json                      # Monorepo configuration
+└── mdx_backend_restructure/            # Standalone Python Backend
+    ├── src/
+    ├── tests/
+    └── requirements.txt
+```
+
+## Repository Relationships
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PROJECT COORDINATION                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────┐         ┌──────────────────────────┐   │
+│  │   TURBOREPO         │   API   │   PYTHON BACKEND         │   │
+│  │   (Frontend)        │◄────────┤   (mdx_backend_restructure)│   │
+│  │                     │         │                          │   │
+│  │ apps/               │         │ FastAPI/Django/Flask     │   │
+│  │ └─mdx_client_       │         │ Database Models          │   │
+│  │   restructure/      │         │ Business Logic           │   │
+│  │                     │         │                          │   │
+│  │ Default: master     │         │ Default: master          │   │
+│  │ Protected: ✓        │         │ Protected: ✓             │   │
+│  └─────────────────────┘         └──────────────────────────┘   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Key Characteristics
+
+### Turborepo Frontend Repository
+- Contains the main web application in `apps/mdx_client_restructure/`
+- Utilizes Turborepo for monorepo management
+- Shares common packages and utilities across applications
+- Builds optimized for web deployment
+
+### Python Backend Repository
+- Standalone Python project with independent versioning
+- Contains API endpoints, business logic, and data models
+- Separate testing and deployment pipeline
+- Can be developed and deployed independently

@@ -1,9 +1,6 @@
 const meta = {
-  index: "",
-  "get-started": "",
-  features: "",
-  themes: "",
-  advanced: "",
+  index: "Introduction",
+  "git-sop": "Git SOP"
 };
 
 export default meta;

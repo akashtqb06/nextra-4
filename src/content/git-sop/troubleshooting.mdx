@@ -1,0 +1,127 @@
+# Troubleshooting
+
+## Common Issues and Solutions
+
+### Merge Conflicts
+
+**Problem**: Merge conflicts when pulling or merging
+```bash
+# Solution 1: Manual resolution
+git status                    # See conflicted files
+# Edit files to resolve conflicts
+git add .                     # Stage resolved files
+git commit -m "resolve merge conflicts"
+
+# Solution 2: Use merge tool
+git mergetool
+```
+
+### Accidental Commits
+
+**Problem**: Committed to wrong branch
+```bash
+# Solution: Move commit to correct branch
+git log --oneline -5          # Get commit hash
+git checkout correct-branch
+git cherry-pick <commit-hash>
+git checkout wrong-branch
+git reset --hard HEAD~1       # Remove from wrong branch
+```
+
+### Branch Issues
+
+**Problem**: Can't switch branches due to uncommitted changes
+```bash
+# Solution 1: Commit changes
+git add .
+git commit -m "wip: save progress"
+
+# Solution 2: Stash changes
+git stash
+git checkout other-branch
+git stash pop                 # When ready to continue
+```
+
+**Problem**: Branch is behind master
+```bash
+# Solution: Update branch with master
+git checkout master
+git pull origin master
+git checkout feature-branch
+git merge master
+# or
+git rebase master
+```
+
+### Remote Issues
+
+**Problem**: Push rejected due to outdated branch
+```bash
+# Solution: Pull and merge/rebase
+git pull origin branch-name
+# Resolve any conflicts
+git push origin branch-name
+```
+
+**Problem**: Remote branch doesn't exist
+```bash
+# Solution: Create remote tracking
+git push -u origin branch-name
+```
+
+## Recovery Procedures
+
+### Lost Commits
+```bash
+# Find lost commits
+git reflog
+
+# Recover specific commit
+git checkout <commit-hash>
+git checkout -b recovery-branch
+```
+
+### Corrupted Repository
+```bash
+# Verify repository integrity
+git fsck
+
+# Clean repository
+git gc --prune=now
+
+# If severely corrupted, re-clone
+git clone <repository-url> <new-directory>
+```
+
+### Branch Recovery
+```bash
+# Recover deleted branch (if not garbage collected)
+git reflog
+git checkout -b recovered-branch <commit-hash>
+```
+
+## Emergency Procedures
+
+### Hotfix Process
+```bash
+# 1. Create hotfix branch from master
+git checkout master
+git pull origin master
+git checkout -b hotfix/sc-99999-critical-fix
+
+# 2. Make minimal fix
+# ... implement fix ...
+
+# 3. Test thoroughly
+npm test  # or pytest for backend
+
+# 4. Commit and push
+git add .
+git commit -m "hotfix(sc-99999): resolve critical security vulnerability"
+git push -u origin hotfix/sc-99999-critical-fix
+
+# 5. Create urgent PR for review
+# 6. After approval, merge immediately
+# 7. Deploy to production
+# 8. Clean up branch
+```

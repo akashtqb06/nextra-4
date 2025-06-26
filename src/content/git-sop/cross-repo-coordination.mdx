@@ -1,0 +1,77 @@
+# Cross-Repository Coordination
+
+## Frontend-Backend-Microservice Development Coordination
+
+```
+Multi-Repository Development Flow
+
+Frontend Repository          Flask Orchestrator         Microservice Repositories
+┌─────────────────────┐      ┌─────────────────────┐    ┌─────────────────────┐
+│                     │      │                     │    │                     │
+│ UI Development      │      │ Static Asset        │    │ Business Logic      │
+│                     │      │ Integration         │    │ Development         │
+│                     │      │                     │    │                     │
+│ API Client Code     │◄────▶│ API Routing &       │◄──▶│ API Endpoints       │
+│                     │      │ Microservice        │    │                     │
+│                     │      │ Coordination        │    │ Data Processing     │
+│                     │      │                     │    │                     │
+│ Component Testing   │      │ Integration         │    │ Unit & Integration  │
+│                     │      │ Testing             │    │ Testing             │
+│                     │      │                     │    │                     │
+│ Build → Static      │─────▶│ Static File         │    │ Build → Executable  │
+│ Assets              │      │ Serving             │    │                     │
+│                     │      │                     │    │                     │
+└─────────────────────┘      └─────────────────────┘    └─────────────────────┘
+```
+
+## Coordination Best Practices
+
+**1. API-First Development**
+- Design microservice APIs before frontend implementation
+- Use OpenAPI/Swagger specifications for consistency
+- Version APIs to maintain compatibility during development
+- Mock APIs during parallel development phases
+
+**2. Static Asset Management**
+- Frontend builds generate versioned assets with hashes
+- Orchestrator serves static files with proper caching headers
+- Asset integration happens automatically during build process
+- CDN-ready asset structure for future optimization
+
+**3. Service Discovery & Communication**
+```python
+# Example service configuration in orchestrator
+MICROSERVICE_CONFIG = {
+    'microservice_a': {
+        'host': 'localhost',
+        'port': 8001,
+        'health_endpoint': '/health',
+        'executable': 'microservice_a.exe'
+    },
+    'microservice_b': {
+        'host': 'localhost', 
+        'port': 8002,
+        'health_endpoint': '/health',
+        'executable': 'microservice_b.exe'
+    }
+}
+```
+
+**4. Development Environment Setup**
+```bash
+# Start all services for development
+./scripts/dev_start.sh
+
+# This script:
+# 1. Starts frontend dev server (npm run dev)
+# 2. Starts orchestrator in dev mode
+# 3. Starts all microservices
+# 4. Sets up service discovery
+# 5. Configures hot-reloading
+```
+
+**5. Integration Testing Strategy**
+- Contract testing between frontend and orchestrator
+- API testing between orchestrator and microservices
+- End-to-end testing across the full stack
+- Performance testing with all services running

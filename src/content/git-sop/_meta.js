@@ -1,0 +1,15 @@
+export default {
+    'repository-overview': 'Repository Overview',
+    'branch-naming-convention': 'Branch Naming Convention',
+    'workflow-process': 'Workflow Process',
+    'branch-protection': 'Branch Protection Rules',
+    'build-deployment': 'Build and Deployment',
+    'cross-repo-coordination': 'Cross-Repository Coordination',
+    'epic-management': 'Epic Management',
+    'testing-strategy': 'Testing Strategy',
+    'shortcut-integration': 'Shortcut Integration',
+    'best-practices': 'Best Practices',
+    'commands-reference': 'Commands Reference',
+    troubleshooting: 'Troubleshooting',
+    'team-collaboration': 'Team Collaboration',
+};

@@ -1,0 +1,64 @@
+# Testing Requirements & Strategy
+
+## Multi-Service Testing Strategy
+
+```
+Testing Pyramid for Microservice Architecture
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           TESTING STRATEGY                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                        ┌─────────────────┐                                 │
+│                        │   E2E Testing   │                                 │
+│                        │  Full System    │                                 │
+│                        └─────────────────┘                                 │
+│                               │                                            │
+│                    ┌─────────────────────────┐                             │
+│                    │   Integration Testing   │                             │
+│                    │  Service-to-Service     │                             │
+│                    └─────────────────────────┘                             │
+│                               │                                            │
+│        ┌──────────────────────────────────────────────┐                    │
+│        │              Unit Testing                    │                    │
+│        │   Individual Service Components              │                    │
+│        └──────────────────────────────────────────────┘                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Testing Requirements Before PR Submission
+
+**Frontend Testing:**
+```bash
+npm run test              # Unit tests for components
+npm run test:integration  # Integration tests with mock APIs
+npm run test:e2e         # End-to-end tests
+npm run test:a11y        # Accessibility testing
+npm run test:lighthouse  # Performance testing
+```
+
+**Orchestrator Testing:**
+```bash
+pytest tests/unit/           # Unit tests for Flask routes
+pytest tests/integration/    # Integration with microservices
+pytest tests/static/         # Static asset serving tests
+pytest tests/auth/           # Authentication middleware tests
+```
+
+**Microservice Testing:**
+```bash
+pytest tests/unit/           # Business logic unit tests
+pytest tests/integration/    # Database integration tests
+pytest tests/api/           # API endpoint tests
+pytest tests/contract/      # Contract tests with orchestrator
+```
+
+**Full System Testing:**
+```bash
+# Run all services and test complete workflows
+./scripts/test_full_system.sh
+
+# This includes:
+# - Starting all services
+```

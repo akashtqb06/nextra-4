@@ -1,0 +1,115 @@
+# Large Feature Development (Epic Management)
+
+## Epic Management Process with Microservices
+
+```
+Epic Development Workflow (Multi-Repository)
+
+Epic Planning → Story Breakdown → Parallel Development → Integration → Testing → Release
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         EPIC COORDINATION                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Frontend Stories    Orchestrator Stories    Microservice Stories          │
+│                                                                             │
+│  ┌─────────────┐    ┌─────────────────┐    ┌─────────────────────────────┐  │
+│  │   UI/UX     │    │   Routing &     │    │   Business Logic &          │  │
+│  │ Components  │    │   Integration   │    │   Data Processing           │  │
+│  │             │    │                 │    │                             │  │
+│  │ sc-001      │    │ sc-002         │    │ sc-003, sc-004, sc-005     │  │
+│  │ sc-006      │    │ sc-007         │    │ sc-008, sc-009             │  │
+│  └─────────────┘    └─────────────────┘    └─────────────────────────────┘  │
+│         │                     │                          │                 │
+│         └─────────────────────┼──────────────────────────┘                 │
+│                               │                                            │
+│                               ▼                                            │
+│                    ┌─────────────────┐                                     │
+│                    │   Integration   │                                     │
+│                    │    Testing      │                                     │
+│                    │   & Release     │                                     │
+│                    └─────────────────┘                                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Epic Coordination Steps
+
+**1. Epic Planning Phase**
+- Break down epic into service-specific stories
+- Identify dependencies between repositories
+- Plan integration points and API contracts
+- Estimate development timeline across services
+
+**2. Story Assignment Strategy**
+```
+Story Distribution Example:
+Epic: "Advanced User Management System"
+
+Frontend Stories (Turborepo):
+├── sc-101: User registration form component
+├── sc-102: User profile management UI
+├── sc-103: Admin user management dashboard
+└── sc-104: User authentication flow
+
+Orchestrator Stories:
+├── sc-201: Route management for user endpoints
+├── sc-202: Authentication middleware integration
+└── sc-203: Static asset serving for user management
+
+Microservice Stories:
+├── sc-301: User registration API (User Service)
+├── sc-302: User profile CRUD operations (User Service)
+├── sc-303: Authentication service integration (Auth Service)
+├── sc-304: User permissions system (Auth Service)
+└── sc-305: Admin management APIs (Admin Service)
+```
+
+**3. Parallel Development Guidelines**
+- Each repository team works independently on assigned stories
+- Regular sync meetings (daily standups) to coordinate progress
+- Shared development environment for integration testing
+- Feature flags to enable/disable incomplete features
+
+**4. Integration Coordination**
+```bash
+# Integration branch strategy for large features
+# Each repository creates integration branch
+
+# Frontend
+git checkout -b integration/epic-user-management
+
+# Orchestrator  
+git checkout -b integration/epic-user-management
+
+# Each Microservice
+git checkout -b integration/epic-user-management
+
+# Integration testing happens on these branches
+# Before merging individual stories to master
+```
+
+## Documentation Requirements
+
+### Cross-Service Documentation
+- **API Documentation**: OpenAPI specs for all microservice endpoints
+- **Integration Guide**: How services communicate and depend on each other
+- **Deployment Guide**: How to build and deploy the complete system
+- **Development Setup**: How to run all services locally
+- **Troubleshooting Guide**: Common issues in multi-service environment
+
+### Repository-Specific Documentation
+**Frontend (Turborepo)**:
+- Component library documentation
+- Build process and asset generation
+- Integration with orchestrator static serving
+
+**Orchestrator (Flask)**:
+- Routing and middleware documentation
+- Static asset serving configuration
+- Microservice integration patterns
+
+**Microservices**:
+- API endpoint documentation
+- Business logic documentation
+- Database schema and migration guides

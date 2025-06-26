@@ -1,0 +1,67 @@
+# Team Collaboration Guidelines
+
+## Communication Protocols
+
+### Code Review Communication
+```
+Code Review Communication Flow
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    REVIEW COMMUNICATION                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Author Request → Reviewer Comments → Author Response → Approval │
+│                                                                 │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+│  │   Clear     │  │Constructive │  │  Address    │  │   Final     │
+│  │Description  │  │  Feedback   │  │  Comments   │  │  Approval   │
+│  │             │  │             │  │             │  │             │
+│  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+#### Review Response Guidelines
+- **Be Respectful**: Provide constructive feedback
+- **Be Specific**: Point to exact lines and suggest improvements
+- **Be Timely**: Respond to review requests within 24 hours
+- **Be Thorough**: Check functionality, not just syntax
+- **Be Collaborative**: Work together to improve code quality
+
+## Cross-Repository Coordination
+
+### Frontend-Backend Development Coordination
+```
+Cross-Repository Development Flow
+
+Frontend Repository              Backend Repository
+┌─────────────────────┐         ┌─────────────────────┐
+│                     │         │                     │
+│ API Integration     │◄────────┤ API Development     │
+│ Development         │         │                     │
+│                     │         │ Database Schema     │
+│ Component Updates   │         │ Changes             │
+│                     │         │                     │
+│ Testing with        │────────▶│ API Testing         │
+│ Backend APIs        │         │                     │
+│                     │         │                     │
+└─────────────────────┘         └─────────────────────┘
+```
+
+#### Coordination Best Practices
+1. **API First**: Design APIs before frontend implementation
+2. **Version Compatibility**: Ensure API versions match frontend expectations
+3. **Parallel Development**: Coordinate feature development across repositories
+4. **Integration Testing**: Test frontend-backend integration regularly
+5. **Documentation Sync**: Keep API documentation updated for frontend team
+
+## Large Feature Development
+
+### Epic Management Process
+```
+Epic Development Workflow
+
+Epic Planning → Story Breakdown → Parallel Development → Integration → Testing → Release
+
+┌─
+```

@@ -1,0 +1,220 @@
+# Commands Reference
+
+## Daily Workflow Commands
+
+### Starting New Work
+```bash
+# Update master branch
+git checkout master
+git pull origin master
+
+# Create new feature branch
+git checkout -b feature/sc-12345-brief-description
+
+# Push branch to remote
+git push -u origin feature/sc-12345-brief-description
+```
+
+### During Development
+```bash
+# Check status
+git status
+
+# Stage changes
+git add .                    # All changes
+git add src/components/      # Specific directory
+git add src/file.js         # Specific file
+
+# Commit changes
+git commit -m "feat(sc-12345): add user authentication component"
+
+# Push changes
+git push origin feature/sc-12345-brief-description
+```
+
+### Branch Management
+```bash
+# List all branches
+git branch -a
+
+# Switch branches
+git checkout branch-name
+
+# Create and switch to new branch
+git checkout -b new-branch-name
+
+# Delete local branch
+git branch -d branch-name
+
+# Delete remote branch
+git push origin --delete branch-name
+```
+
+### Advanced Git Commands
+
+#### Rewriting History (Use Carefully)
+```bash
+# Interactive rebase to squash commits
+git rebase -i HEAD~3
+
+# Amend last commit message
+git commit --amend -m "new commit message"
+
+# Reset to previous commit (keeps changes)
+git reset --soft HEAD~1
+
+# Reset to previous commit (discards changes)
+git reset --hard HEAD~1
+```
+
+#### Stashing Work
+```bash
+# Stash current changes
+git stash
+
+# Stash with message
+git stash save "work in progress on feature X"
+
+# List stashes
+git stash list
+
+# Apply most recent stash
+git stash apply
+
+# Apply specific stash
+git stash apply stash@{2}
+
+# Drop stash
+git stash drop stash@{0}
+```
+
+#### Remote Management
+```bash
+# List remotes
+git remote -v
+
+# Add remote
+git remote add upstream https://github.com/original/repo.git
+
+# Fetch from all remotes
+git fetch --all
+
+# Push to specific remote
+git push upstream master
+```
+
+### Repository-Specific Commands
+
+#### Frontend (Turborepo)
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Build optimized for microservice integration
+npm run build:prod
+
+# Run tests
+npm run test
+
+# Run end-to-end tests
+npm run test:e2e
+
+# Lint code
+npm run lint
+
+# Type check
+npm run type-check
+
+# Performance testing
+npm run test:lighthouse
+```
+
+#### Backend Microservices (Python)
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate  # Linux/Mac
+# or
+venv\Scripts\activate     # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install PyArmor for builds
+pip install pyarmor
+
+# Run tests
+pytest
+
+# Run with coverage
+pytest --cov=src
+
+# Format code
+black .
+
+# Lint code
+flake8
+
+# Type checking
+mypy .
+
+# Security scanning
+bandit -r src/
+safety check
+
+# Build executable with PyArmor
+python build_config.py --service [service_name] --entry [entry_point]
+
+# Verify build
+python build_config.py --verify
+```
+
+#### Build Commands (All Services)
+```bash
+# Build frontend and integrate with orchestrator
+./scripts/build_frontend.sh
+
+# Build all microservices
+./scripts/build_all_services.sh
+
+# Build specific microservice
+./scripts/build_service.sh [service_name]
+
+# Full build pipeline (manual)
+./scripts/full_build.sh
+
+# Clean build artifacts
+./scripts/clean_build.sh
+
+# Package for distribution
+./scripts/package_release.sh
+```
+
+#### Flask Orchestrator Specific Commands
+```bash
+# Run development server with static assets
+flask run --debug
+
+# Test static asset serving
+curl http://localhost:5000/static/js/main.js
+
+# Run with production settings
+flask run --host=0.0.0.0 --port=8080
+
+# Build orchestrator executable
+python build_config.py --service orchestrator --entry app.py
+
+# Test microservice communication
+python test_services.py --all
+
+# Health check all services
+python health_check.py
+```

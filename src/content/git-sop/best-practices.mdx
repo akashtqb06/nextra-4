@@ -1,0 +1,53 @@
+# Best Practices
+
+## Commit Best Practices
+
+```
+Commit Quality Guidelines
+
+Good Commit Practices:
+┌─────────────────────────────────────────────────────────────────┐
+│  ✓ Small, focused commits                                       │
+│  ✓ Clear, descriptive commit messages                          │
+│  ✓ Reference Shortcut story IDs                                │
+│  ✓ Include type prefix (feat, fix, docs, etc.)                 │
+│  ✓ Commit frequently during development                        │
+│  ✓ Test before committing                                      │
+└─────────────────────────────────────────────────────────────────┘
+
+Bad Commit Practices:
+┌─────────────────────────────────────────────────────────────────┐
+│  ✗ Large commits with multiple unrelated changes               │
+│  ✗ Vague commit messages ("fix stuff", "updates")              │
+│  ✗ Commits without story references                            │
+│  ✗ Commits that break tests                                    │
+│  ✗ Commits with debugging code still included                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+- **Daily**: Commit working progress at end of day
+- **Feature Complete**: Commit when a logical unit of work is complete
+- **Before Breaks**: Commit before taking extended breaks
+- **Before Switching**: Commit before switching to different tasks
+
+## Code Review Best Practices
+
+### For Authors
+- Self-review your PR before requesting reviews
+- Keep PRs focused and under 400 lines when possible
+- Provide context and explain complex changes
+- Ensure adequate test coverage
+- Update documentation for new features
+
+### For Reviewers
+- Review PRs within 24 hours
+- Provide specific, actionable feedback
+- Clarify unclear code or decisions
+- Pull and test complex changes locally
+- Only approve code you understand and trust
+
+## Branch Management
+
+- Clean up merged branches regularly
+- Use integration branches for large features
+- Protect master/main branch with required reviews and checks

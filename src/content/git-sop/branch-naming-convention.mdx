@@ -1,0 +1,81 @@
+# Branch Naming Convention
+
+## Naming Standards
+
+Our branch naming follows a structured format that integrates with Shortcut story tracking:
+
+```
+Branch Type Format: [type]/[shortcut-story-id]-[brief-description]
+```
+
+## Branch Types & Examples
+
+### Feature Branches
+**Format:** `feature/sc-[story-id]-[brief-description]`
+
+```
+Examples:
+feature/sc-12345-user-authentication
+feature/sc-67890-payment-integration
+feature/sc-11111-dashboard-redesign
+```
+
+### Bugfix Branches
+**Format:** `bugfix/sc-[story-id]-[brief-description]`
+
+```
+Examples:
+bugfix/sc-23456-login-redirect-issue
+bugfix/sc-78901-api-timeout-error
+bugfix/sc-33333-mobile-responsive-fix
+```
+
+### Hotfix Branches
+**Format:** `hotfix/sc-[story-id]-[brief-description]`
+
+```
+Examples:
+hotfix/sc-99999-critical-security-patch
+hotfix/sc-88888-payment-failure-fix
+hotfix/sc-77777-database-connection-error
+```
+
+### Release Branches
+**Format:** `release/v[major].[minor].[patch]`
+
+```
+Examples:
+release/v1.2.0
+release/v2.0.0-beta
+release/v1.1.5
+```
+
+### Development Branches
+**Format:** `develop/[feature-name]`
+
+```
+Examples:
+develop/new-user-onboarding
+develop/api-v2-migration
+develop/performance-optimization
+```
+
+## Branch Hierarchy Visual Guide
+
+```
+Branch Hierarchy & Naming Convention
+
+master (protected)
+├── feature/sc-12345-user-auth
+│   ├── commits...
+│   └── → PR → merge to master
+├── bugfix/sc-23456-login-fix
+│   ├── commits...
+│   └── → PR → merge to master
+├── release/v1.2.0
+│   ├── commits...
+│   └── → PR → merge to master
+└── hotfix/sc-99999-security-patch
+    ├── commits...
+    └── → PR → merge to master (priority)
+```
